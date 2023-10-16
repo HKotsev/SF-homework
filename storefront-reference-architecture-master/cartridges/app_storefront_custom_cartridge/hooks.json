@@ -1,0 +1,8 @@
+{
+    "hooks": [
+        {
+            "name": "app.home.initial",
+            "script": "./cartridge/scripts/hooks/home/addValue.js"
+        }
+    ]
+}
