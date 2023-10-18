@@ -42,7 +42,7 @@ const getCustomerById = (id) => {
  */
 const getMainCategories = (catalogID) => {
     const catalog = CatalogMgr.getCatalog(catalogID);
-    return catalog.getRoot();
+    return catalog.getRoot().getSubCategories();
 };
 
 /**
@@ -52,10 +52,6 @@ const getMainCategories = (catalogID) => {
  * @returns booliean
  */
 const isMemberOfGroup = (customer, groupId) => {
-    if (customer.isMemberOfCustomerGroup(groupId)) {
-        return true;
-    }
-
-    return false;
+    return customer.isMemberOfCustomerGroup(groupId);
 };
 module.exports = server.exports();
