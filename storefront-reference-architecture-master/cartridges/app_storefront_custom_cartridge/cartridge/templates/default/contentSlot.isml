@@ -1,0 +1,30 @@
+
+<isdecorate template="common/layout/page">
+    <isscript>
+        var isLogged= customer.isAuthenticated();
+        var ContentMgr=require("dw/content/ContentMgr")
+        var assets = require('*/cartridge/scripts/assets.js');
+        var loggedAsset = ContentMgr.getContent('Logged-user')
+         var GuestAsset = ContentMgr.getContent('Guest-user')​
+        assets.addJs('/js/productTile.js');
+        assets.addCss('/css/homePage.css');
+    </isscript>
+
+    <div class="home-main homepage">
+    
+        <isslot id="home-main-m" description="Main home page slot." context="global" />
+    </div>
+
+
+<isslot id="content-slot" description="Link to a Product Set." context="global" />
+ <isif condition="${isLogged}">
+ <div style="display: flex; justify-content:center; align-items:center;gap:0.8rem">
+<h1 style="color:red"><isprint value="${customer.profile.firstName}"/></h1>
+<isprint value="${loggedAsset.custom.body}" encoding="off" /> ​
+</div>
+</isif>
+ <isif condition="${!isLogged}">
+<isprint value="${GuestAsset.custom.body}" encoding="off" />
+</isif>​
+​
+<isslot id="footer-column-n" description="Link to a Product Set." context="global" /></isdecorate>
