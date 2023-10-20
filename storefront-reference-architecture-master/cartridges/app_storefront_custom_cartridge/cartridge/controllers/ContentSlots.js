@@ -27,9 +27,24 @@ server.get(
     function (req, res, next) {
         var Site = require("dw/system/Site");
         var pageMetaHelper = require("*/cartridge/scripts/helpers/pageMetaHelper");
-
+        var ContentMgr = require("dw/content/ContentMgr");
+        const isLogged = customer.isAuthenticated();
         pageMetaHelper.setPageMetaTags(req.pageMetaData, Site.current);
-        res.render("contentSlot");
+        let contentAsset;
+
+        if (isLogged) {
+            contentAsset = (
+                ContentMgr.getContent("Logged-user").custom.body + ""
+            ).replace("{0}", customer.profile.firstName);
+        } else {
+            contentAsset = ContentMgr.getContent("Guest-user").custom.body;
+        }
+
+        res.render("contentSlot", {
+            isLogged,
+            contentAsset,
+        });
+
         next();
     },
     pageMetaData.computedPageMetaData
