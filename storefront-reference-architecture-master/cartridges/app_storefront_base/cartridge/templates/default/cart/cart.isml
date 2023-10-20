@@ -53,7 +53,8 @@
             <div class="row">
                 <!---product cards--->
                 <div class="col-sm-7 col-md-8">
-                    <isloop items="${pdict.items}" var="lineItem">
+                    <isloop items="${pdict.items}" var="lineItem" status="index">
+                   
                         <isif condition="${lineItem.productType === 'bundle'}">
                             <isinclude template="cart/productCard/cartBundleCard" />
                         <iselse/>
@@ -63,7 +64,13 @@
                                 <isinclude template="cart/productCard/cartProductCard" />
                             </isif>
                         </isif>
+                    
                     </isloop>
+                
+                    <isif condition="${pdict.items.length>1}">
+                    <div>Products are more then 1</div>
+                    </isif>
+
                     <isinclude template="cart/cartApproachingDiscount" />
                 </div>
                 <!---totals, and checkout actions--->

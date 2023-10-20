@@ -1,0 +1,19 @@
+<isdecorate template="common/layout/page">
+
+<h1>hy<isprint value="${pdict.msg}" /></h1>
+
+<isscript>
+    let arr=[1,2,3];
+</isscript>
+
+<isloop items="${arr}" var="subItem">
+    <p>${subItem}</p></isloop>
+    <isif condition="${!session.custom.test}">
+    <isset value="1"  name="test" scope="session"/>
+<iselse>
+    ${session.custom.test++}
+</isif>
+
+<isinclude template="dwScriptDemo" />
+
+</isdecorate>

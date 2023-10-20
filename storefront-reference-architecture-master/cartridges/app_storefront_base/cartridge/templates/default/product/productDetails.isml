@@ -4,6 +4,7 @@
         var assets = require('*/cartridge/scripts/assets');
         assets.addJs('/js/productDetail.js');
         assets.addCss('/css/product/detail.css');
+        pdict.product.showPromo=true;
     </isscript>
 
     <isset name="product" value="${pdict.product}" scope="page" />
@@ -121,6 +122,9 @@
                             </div>
 
                             <!-- Cart and [Optionally] Apple Pay -->
+                            <isif condition="${product.showPromo}">
+                            <div class="d-flex justify-content-center">Buy this item 😘</div>
+                            </isif>
                             <isinclude template="product/components/addToCartProduct" />
                         </div>
 
