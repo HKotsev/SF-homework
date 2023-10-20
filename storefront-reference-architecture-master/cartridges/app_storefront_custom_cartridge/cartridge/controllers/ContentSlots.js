@@ -33,9 +33,9 @@ server.get(
         let contentAsset;
 
         if (isLogged) {
-            contentAsset = (
-                ContentMgr.getContent("Logged-user").custom.body + ""
-            ).replace("{0}", customer.profile.firstName);
+            contentAsset = ContentMgr.getContent("Logged-user")
+                .custom.body.toString()
+                .replace("{0}", customer.profile.firstName);
         } else {
             contentAsset = ContentMgr.getContent("Guest-user").custom.body;
         }
