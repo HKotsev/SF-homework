@@ -40,7 +40,7 @@ server.get(
             contentAsset = ContentMgr.getContent("Guest-user").custom.body;
         }
 
-        res.render("contentSlot", {
+        res.render("contentSlotAndAsset", {
             isLogged,
             contentAsset,
         });
