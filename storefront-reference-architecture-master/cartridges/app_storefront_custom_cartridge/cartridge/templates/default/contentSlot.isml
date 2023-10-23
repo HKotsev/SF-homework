@@ -1,0 +1,13 @@
+<isdecorate template="common/layout/page">
+
+<isslot id="content-slot" description="Link to a Product Set." context="global" /> 
+<isif condition="${pdict.isLogged}">
+    <div style="display: flex; justify-content:center; align-items:center;gap:0.8rem">
+        <isprint value="${pdict.contentAsset}" encoding="off" /> ​
+    </div>
+</isif>
+ <isif condition="${!pdict.isLogged}">
+    <isprint value="${pdict.contentAsset}" encoding="off" />
+</isif>​
+​
+</isdecorate>
