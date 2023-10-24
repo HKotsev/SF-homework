@@ -1,11 +1,9 @@
 <isdecorate template="common/layout/page">
-
     <isscript>
         var assets = require('*/cartridge/scripts/assets');
         assets.addJs('/js/productDetail.js');
         assets.addCss('/css/product/detail.css');
     </isscript>
-
     <isset name="product" value="${pdict.product}" scope="page" />
     <isset name="showPromo" value="${product.raw.custom.showPromo}" scope="page" />
     <isset name="isQuickView" value="${false}" scope="page" />
@@ -126,8 +124,7 @@
                         <isif condition="${showPromo}">
                             <div class="d-flex justify-content-center">Buy this item 😘</div>
                             <iselse>
-                                <div class="d-flex justify-content-center">This item dont have promo
-                                </div>
+                                <div class="d-flex justify-content-center">This item dont have promo</div>
                         </isif>
                         <isinclude template="product/components/addToCartProduct" />
                     </div>
