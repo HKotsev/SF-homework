@@ -40,8 +40,6 @@
         <div class="invalid-feedback"></div>
     </div>
 
-
-    <div class="row">
         <!-- countryOfResidence  -->
         <div class="col-6">
             <div class="form-group
@@ -52,8 +50,14 @@
                 <select class="form-control" id="countryOfResidence"
                     <isprint value="${pdict.profileForm.customer.countryOfResidence.attributes}" encoding="off" />
                     autocomplete="countryOfResidence">
-                    <isloop items=${pdict.profileForm.customer.countryOfResidence.options} var="countryOfResidence">
-                        <option id="${countryOfResidence.id}" value="${countryOfResidence.htmlValue}" <isif condition="${countryOfResidence.selected}">selected</isif>>${countryOfResidence.label}</option>
+                    <isloop items="${pdict.profileForm.customer.countryOfResidence.options}" var="countryOfResidence">
+                    <isif condition="${pdict.profileForm.customer.countryOfResidence.value==countryOfResidence.value}">
+                        <option selected id="${countryOfResidence.id}" value="${countryOfResidence.value}">
+                        ${countryOfResidence.label}</option>
+                    <iselse/>
+                        <option  id="${countryOfResidence.id}" value="${countryOfResidence.value}">
+                        ${countryOfResidence.label}</option>
+                    </isif>
                     </isloop>
                 </select>
                 <div class="invalid-feedback"></div>

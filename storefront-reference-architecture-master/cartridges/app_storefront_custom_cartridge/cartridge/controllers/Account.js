@@ -19,7 +19,7 @@ server.append(
         let viewData = res.getViewData();
         viewData.profileForm.customer.interests.value =
             accountModel.profile.interests;
-        viewData.profileForm.customer.countryOfResidences.value =
+        viewData.profileForm.customer.countryOfResidence.value =
             accountModel.profile.countryOfResidence;
         res.setViewData(viewData);
         next();
