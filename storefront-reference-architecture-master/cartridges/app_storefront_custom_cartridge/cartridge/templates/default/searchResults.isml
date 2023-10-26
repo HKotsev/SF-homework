@@ -1,0 +1,18 @@
+<isdecorate template="common/layout/page">
+    <div class="container">
+            <div class="row justify-content-center">
+        <isloop items="${pdict.searchResults.productSearchHits}" var="productHit" status="loopstatus">
+                <div class="col-md-4 mb-2 text-center d-flex flex-column ">
+                    <a href="${URLUtils.url('Product-Show', 'pid', productHit.getProduct().ID)}">${productHit.getProduct().name}</a>
+                    <img src="${productHit.getProduct().getImage('small').httpURL}" alt="">
+                    
+                </div>
+                <isif condition="${loopstatus.count % 3 === 0}">
+                    <div >
+                        <hr/>
+                    </div>
+                </isif>
+            </isloop> 
+                </div>
+        </div>
+</isdecorate>
