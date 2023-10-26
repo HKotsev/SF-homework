@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-var AddressModel = require('*/cartridge/models/address');
-var URLUtils = require('dw/web/URLUtils');
-var Customer = require('dw/customer/Customer');
+var AddressModel = require("*/cartridge/models/address");
+var URLUtils = require("dw/web/URLUtils");
+var Customer = require("dw/customer/Customer");
 
 /**
  * Creates a plain object that contains profile information
@@ -16,8 +16,10 @@ function getProfile(profile) {
             firstName: profile.firstName,
             lastName: profile.lastName,
             email: profile.email,
-            phone: Object.prototype.hasOwnProperty.call(profile, 'phone') ? profile.phone : profile.phoneHome,
-            password: '********'
+            phone: Object.prototype.hasOwnProperty.call(profile, "phone")
+                ? profile.phone
+                : profile.phoneHome,
+            password: "********",
         };
     } else {
         result = null;
@@ -66,10 +68,13 @@ function getPayment(wallet) {
         if (paymentInstruments && paymentInstruments.length > 0) {
             var paymentInstrument = paymentInstruments[0];
             return {
-                maskedCreditCardNumber: paymentInstrument.maskedCreditCardNumber,
+                maskedCreditCardNumber:
+                    paymentInstrument.maskedCreditCardNumber,
                 creditCardType: paymentInstrument.creditCardType,
-                creditCardExpirationMonth: paymentInstrument.creditCardExpirationMonth,
-                creditCardExpirationYear: paymentInstrument.creditCardExpirationYear
+                creditCardExpirationMonth:
+                    paymentInstrument.creditCardExpirationMonth,
+                creditCardExpirationYear:
+                    paymentInstrument.creditCardExpirationYear,
             };
         }
     }
@@ -84,21 +89,29 @@ function getPayment(wallet) {
 function getCustomerPaymentInstruments(userPaymentInstruments) {
     var paymentInstruments;
 
-    paymentInstruments = userPaymentInstruments.map(function (paymentInstrument) {
+    paymentInstruments = userPaymentInstruments.map(function (
+        paymentInstrument
+    ) {
         var result = {
             creditCardHolder: paymentInstrument.creditCardHolder,
             maskedCreditCardNumber: paymentInstrument.maskedCreditCardNumber,
             creditCardType: paymentInstrument.creditCardType,
-            creditCardExpirationMonth: paymentInstrument.creditCardExpirationMonth,
-            creditCardExpirationYear: paymentInstrument.creditCardExpirationYear,
-            UUID: paymentInstrument.UUID
+            creditCardExpirationMonth:
+                paymentInstrument.creditCardExpirationMonth,
+            creditCardExpirationYear:
+                paymentInstrument.creditCardExpirationYear,
+            UUID: paymentInstrument.UUID,
         };
 
         result.cardTypeImage = {
-            src: URLUtils.staticURL('/images/' +
-                paymentInstrument.creditCardType.toLowerCase().replace(/\s/g, '') +
-                '-dark.svg'),
-            alt: paymentInstrument.creditCardType
+            src: URLUtils.staticURL(
+                "/images/" +
+                    paymentInstrument.creditCardType
+                        .toLowerCase()
+                        .replace(/\s/g, "") +
+                    "-dark.svg"
+            ),
+            alt: paymentInstrument.creditCardType,
         };
 
         return result;
@@ -117,22 +130,39 @@ function getCustomerPaymentInstruments(userPaymentInstruments) {
 function account(currentCustomer, addressModel, orderModel) {
     this.profile = getProfile(currentCustomer.profile);
     this.addresses = getAddresses(currentCustomer.addressBook);
-    this.preferredAddress = addressModel || getPreferredAddress(currentCustomer.addressBook);
+    this.preferredAddress =
+        addressModel || getPreferredAddress(currentCustomer.addressBook);
     this.orderHistory = orderModel;
-    this.payment = getPayment(currentCustomer instanceof Customer ? currentCustomer.profile.wallet : currentCustomer.wallet);
-    this.registeredUser = currentCustomer instanceof Customer ? (currentCustomer.authenticated && currentCustomer.registered) : (currentCustomer.raw.authenticated && currentCustomer.raw.registered);
-    this.isExternallyAuthenticated = currentCustomer instanceof Customer ? currentCustomer.externallyAuthenticated : currentCustomer.raw.externallyAuthenticated;
+    this.payment = getPayment(
+        currentCustomer instanceof Customer
+            ? currentCustomer.profile.wallet
+            : currentCustomer.wallet
+    );
+    this.registeredUser =
+        currentCustomer instanceof Customer
+            ? currentCustomer.authenticated && currentCustomer.registered
+            : currentCustomer.raw.authenticated &&
+              currentCustomer.raw.registered;
+    this.isExternallyAuthenticated =
+        currentCustomer instanceof Customer
+            ? currentCustomer.externallyAuthenticated
+            : currentCustomer.raw.externallyAuthenticated;
 
     if (currentCustomer instanceof Customer) {
-        this.customerPaymentInstruments = currentCustomer.profile.wallet
-        && currentCustomer.profile.wallet.paymentInstruments
-        ? getCustomerPaymentInstruments(currentCustomer.profile.wallet.paymentInstruments.toArray())
-        : null;
+        this.customerPaymentInstruments =
+            currentCustomer.profile.wallet &&
+            currentCustomer.profile.wallet.paymentInstruments
+                ? getCustomerPaymentInstruments(
+                      currentCustomer.profile.wallet.paymentInstruments.toArray()
+                  )
+                : null;
     } else {
-        this.customerPaymentInstruments = currentCustomer.wallet
-        && currentCustomer.wallet.paymentInstruments
-        ? getCustomerPaymentInstruments(currentCustomer.wallet.paymentInstruments)
-        : null;
+        this.customerPaymentInstruments =
+            currentCustomer.wallet && currentCustomer.wallet.paymentInstruments
+                ? getCustomerPaymentInstruments(
+                      currentCustomer.wallet.paymentInstruments
+                  )
+                : null;
     }
 }
 
