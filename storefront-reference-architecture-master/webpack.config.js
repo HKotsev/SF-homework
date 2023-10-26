@@ -19,7 +19,6 @@ var bootstrapPackages = {
     // Tooltip: 'exports-loader?Tooltip!bootstrap/js/src/tooltip',
     Util: "exports-loader?Util!bootstrap/js/src/util",
 };
-
 module.exports = [
     {
         mode: "production",
