@@ -1,0 +1,15 @@
+ <isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/experience/components/commerceLayouts/instagramPost.css');
+</isscript>
+ 
+ <div class="row postContainer">
+    <div cla class="col-md-6 m-0 p-0">
+        <iframe  class="w-100" src="${pdict.src}" height="${pdict.height}" title="${pdict.title}">
+        </iframe>
+    </div>
+    <div class="col-md-6 m-0 p-2" >
+        <h1 class="heading">${pdict.title}</h1>
+        <div class="postContent">${pdict.postContent}</div>
+    </div>
+ </div>

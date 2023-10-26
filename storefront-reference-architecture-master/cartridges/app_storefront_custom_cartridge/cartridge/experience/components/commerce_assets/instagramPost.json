@@ -1,0 +1,44 @@
+{
+    "name": "Instagram post",
+    "description": "A Instagram post",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "instagramPost",
+            "name": "Instagram post configuration",
+            "description": "You can define the src and title for the video, aslo you can scpecify height and width of the youtube container",
+            "attribute_definitions": [
+                {
+                    "id": "title",
+                    "name": "Instagram post title",
+                    "description": "The title of the Instagram post.",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "src",
+                    "name": "Instagram post src",
+                    "description": "Src to the Intagram post that will be displayed.",
+                    "type": "url",
+                    "required": true
+                },
+                {
+                    "id": "postContent",
+                    "name": "Instagram post content",
+                    "description": "The content of the Instagram post.",
+                    "type": "text",
+                    "required": true
+                },
+                {
+                    "id": "height",
+                    "name": "Instagram post height",
+                    "description": "The YouTube player height",
+                    "type": "string",
+                    "required": false,
+                    "default_value": "400"
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}

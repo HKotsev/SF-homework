@@ -1,0 +1,45 @@
+{
+    "name": "YouTube banner",
+    "description": "A YouTube banner",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "youtubeVideo",
+            "name": "YouTube banner configuration",
+            "description": "You can define the src and title for the video, aslo you can scpecify height and width of the youtube container",
+            "attribute_definitions": [
+                {
+                    "id": "title",
+                    "name": "YouTube banner title",
+                    "description": "The title of the youtube banner.",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "src",
+                    "name": "YouTube video src",
+                    "description": "Src to the youtube video that will be displayed.",
+                    "type": "url",
+                    "required": true
+                },
+                {
+                    "id": "height",
+                    "name": "YouTube player height",
+                    "description": "The YouTube player height",
+                    "type": "string",
+                    "required": false,
+                    "default_value": "400"
+                },
+                {
+                    "id": "width",
+                    "name": "YouTube player width",
+                    "description": "The YouTube player width",
+                    "type": "string",
+                    "required": false,
+                    "default_value": "100%"
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}
