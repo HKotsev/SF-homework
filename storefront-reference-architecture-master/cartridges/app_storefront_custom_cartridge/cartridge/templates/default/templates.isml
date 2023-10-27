@@ -1,0 +1,9 @@
+<isdecorate template="common/layout/page">
+
+    <isif condition="${!session.custom.test}">
+        <isset value="1" name="test" scope="session" />
+        <iselse>
+            ${session.custom.test++}
+    </isif>
+
+</isdecorate>
