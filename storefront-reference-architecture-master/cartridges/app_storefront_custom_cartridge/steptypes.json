@@ -4,7 +4,7 @@
             {
                 "@type-id": "custom.DemoTestJobStep",
                 "description": "My custom script step type",
-                "module": "app_storefront_custom_cartridge/cartridge/scripts/steps/DemoTestModuleJob"
+                "module": "app_storefront_custom_cartridge/cartridge/scripts/steps/CreatingCSVStep"
             }
         ]
     }
