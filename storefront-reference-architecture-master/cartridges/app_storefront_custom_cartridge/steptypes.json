@@ -2,7 +2,7 @@
     "step-types": {
         "script-module-step": [
             {
-                "@type-id": "custom.DemoTestJobStep",
+                "@type-id": "custom.GeneratingCSVJobStep",
                 "description": "My custom script step type",
                 "module": "app_storefront_custom_cartridge/cartridge/scripts/steps/CreatingCSVStep"
             }
