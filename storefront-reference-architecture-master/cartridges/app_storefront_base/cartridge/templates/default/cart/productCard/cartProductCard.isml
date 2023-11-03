@@ -24,13 +24,13 @@
                                 </div>
                             </isif>
                         </isloop>
-
                         <isinclude template="cart/productCard/cartProductCardAvailability" />
                         <isinclude template="cart/productCard/cartProductCardEdit" />
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="col-12 d-lg-none"><hr class="line-item-divider"></div>
 
         <isinclude template="cart/productCard/cartProductCardProductPrice" />
@@ -41,8 +41,13 @@
             </div>
         </isif>
     </div>
-
     <isif condition="${lineItem.bonusProductLineItemUUID === 'bonus'}">
         <isinclude template="cart/productCard/cartEmbeddedBonusProducts" />
     </isif>
+    <isif condition="${index.first}">
+         <div class="d-flex justify-content-center">This is the first item</div>
+    <iselseif condition="${index.last}" >
+         <div class="d-flex justify-content-center">This is the last element</div>
+    </iselseif>
+         </isif>
 </div>
