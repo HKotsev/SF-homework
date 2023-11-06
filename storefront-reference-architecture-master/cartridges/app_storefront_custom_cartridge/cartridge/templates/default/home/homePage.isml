@@ -15,7 +15,7 @@
             <isslot id="home-categories-m" description="Categories slots on the home page." context="global" />
         </div>
     </div>
-    
+
     <isinclude url="${URLUtils.url("DeathStar-Show")}"/>
 
     <div class="container home-product-tiles homepage">

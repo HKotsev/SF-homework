@@ -26,7 +26,6 @@ var userLoggedIn = require("*/cartridge/scripts/middleware/userLoggedIn");
  */
 server.get(
     "Show",
-    userLoggedIn.validateLoggedIn,
     consentTracking.consent,
     cache.applyDefaultCache,
     function (req, res, next) {

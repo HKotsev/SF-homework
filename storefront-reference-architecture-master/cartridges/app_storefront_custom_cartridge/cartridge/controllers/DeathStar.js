@@ -26,10 +26,15 @@ server.get(
     consentTracking.consent,
     cache.applyDefaultCache,
     function (req, res, next) {
-        const deathstar = deathstarService.getDeathStar();
-        res.render("deathstar", {
-            deathstar: deathstar,
-        });
+        const Site = require("dw/system/Site");
+        const accessSwapi = Site.current.preferences.custom.accessSwapi;
+
+        if (accessSwapi) {
+            const deathstar = deathstarService.getDeathStar();
+            res.render("deathstar", {
+                deathstar: deathstar,
+            });
+        }
         next();
     },
     pageMetaData.computedPageMetaData
