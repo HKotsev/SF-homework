@@ -2,10 +2,6 @@
 
 <isslot id="content-slot" description="Link to a Product Set." context="global" /> 
 
-    <div style="display: flex; justify-content:center; align-items:center;gap:0.8rem">
-
         <isprint value="${pdict.contentAsset}" encoding="off" /> ​
 
-    </div>
-    
 </isdecorate>
