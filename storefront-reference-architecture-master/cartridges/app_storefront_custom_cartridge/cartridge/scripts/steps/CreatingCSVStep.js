@@ -1,20 +1,27 @@
 var CustomObjectMgr = require("dw/object/CustomObjectMgr");
 var Transaction = require("dw/system/Transaction");
+var Logger = require("dw.system.Logger");
 var { File, FileWriter, CSVStreamWriter } = require("dw/io");
 
 module.exports.execute = function () {
-    try {
-        var customObjectIterator = CustomObjectMgr.getAllCustomObjects(
-            "Hristian_NewsletterSubscription"
-        );
-        var CSVWriter;
-        var file;
-        var fileWriter;
+    var customObjectIterator = CustomObjectMgr.getAllCustomObjects(
+        "Hristian_NewsletterSubscription"
+    );
+    var CSVWriter;
+    var file;
+    var fileWriter;
 
+    try {
         file = new File([File.IMPEX, "objects.csv"].join(File.SEPARATOR));
         fileWriter = new FileWriter(file);
-
+        if (!fileWriter) {
+            throw new Error("There is problem with fileWriter");
+        }
         CSVWriter = new CSVStreamWriter(fileWriter);
+
+        if (!CSVWriter) {
+            throw new Error("There is problem with CSVStreamWriter");
+        }
 
         CSVWriter.writeNext(["Email", "FirstName", "LastName", "Gender"]);
         while (customObjectIterator.hasNext()) {
@@ -30,6 +37,7 @@ module.exports.execute = function () {
             });
         }
     } catch (error) {
+        Logger.error("Error from job {0}:", error.message);
     } finally {
         CSVWriter.close();
         fileWriter.close();
