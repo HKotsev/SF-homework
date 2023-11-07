@@ -39,7 +39,11 @@ module.exports.execute = function () {
     } catch (error) {
         Logger.error("Error from job {0}:", error.message);
     } finally {
-        CSVWriter.close();
-        fileWriter.close();
+        if (CSVWriter) {
+            CSVWriter.close();
+        }
+        if (fileWriter) {
+            fileWriter.close();
+        }
     }
 };
