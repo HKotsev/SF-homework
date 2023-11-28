@@ -1,0 +1,3 @@
+<isset name="deathstar" value="${pdict.deathstar}" scope="page" />
+
+<h2>${deathstar.name},${deathstar.manufacturer},${deathstar.starship_class}</h2>
